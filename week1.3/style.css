@@ -1,0 +1,43 @@
+body{
+    background-color: rgb(236, 244, 8);
+    font-style: calc(1.5rem + 1.5vw);
+    color: rgb(0, 0, 0);
+    
+    text-align: center;
+}
+h1{
+    color: rgb(248, 238, 238);
+}
+header{
+ background-color: rgb(249, 0, 116);
+ padding: 2rem;
+ border-radius: 2rem;
+ font-style: oblique;
+ color: rgb(0, 0, 0);
+ text-align: center;
+}
+img{
+    border-radius: 20%;
+    width: 10rem;
+    height: 10rem;
+}
+ul{
+    text-align: center;
+}
+table{
+    text-align: center;
+    margin: auto;
+    background-color: rgb(224, 129, 177);
+}
+th, td {
+            padding: 10px;
+        }
+         ul li {
+            margin: 8px 0;
+        }
+    h2{
+        background-color: rgb(224, 90, 90);
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        text-align: center;
+        color: #fffbfb;
+    }
