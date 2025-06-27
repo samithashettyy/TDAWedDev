@@ -17,7 +17,7 @@ background-image: url('ss.jpeg');
 border-radius: 8px;
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 width: 100%;
-max-width: 700px; /* Increased max-width */
+max-width: 700px; 
 }
 
 h1 {
