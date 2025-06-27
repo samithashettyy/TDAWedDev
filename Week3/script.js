@@ -7,11 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterCompletedBtn = document.getElementById('filterCompleted');
 
     let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    let currentFilter = 'all'; // 'all', 'pending', 'completed'
-
-    // Function to render tasks based on the current filter
+    let currentFilter = 'all'; 
     function renderTasks() {
-        taskList.innerHTML = ''; // Clear existing tasks
+        taskList.innerHTML = ''; 
         const filteredTasks = tasks.filter(task => {
             if (currentFilter === 'all') {
                 return true;
@@ -25,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         filteredTasks.forEach((task, index) => {
             const li = document.createElement('li');
             li.className = `task-item ${task.completed ? 'completed' : ''}`;
-            li.setAttribute('data-id', task.id); // Use a unique ID for each task
+            li.setAttribute('data-id', task.id); 
 
             li.innerHTML = `
                 <input type="checkbox" ${task.completed ? 'checked' : ''}>
@@ -36,23 +34,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Function to add a new task
+    
     function addTask() {
         const taskText = taskInput.value.trim();
         if (taskText !== '') {
             const newTask = {
-                id: Date.now(), // Unique ID
+                id: Date.now(), 
                 text: taskText,
                 completed: false
             };
             tasks.push(newTask);
             localStorage.setItem('tasks', JSON.stringify(tasks));
-            taskInput.value = ''; // Clear input field
+            taskInput.value = ''; 
             renderTasks();
         }
     }
 
-    // Function to toggle task completion
+    
     function toggleTaskCompletion(taskId) {
         tasks = tasks.map(task =>
             task.id === taskId ? { ...task, completed: !task.completed } : task
@@ -61,29 +59,25 @@ document.addEventListener('DOMContentLoaded', () => {
         renderTasks();
     }
 
-    // Function to delete a task
     function deleteTask(taskId) {
         tasks = tasks.filter(task => task.id !== taskId);
         localStorage.setItem('tasks', JSON.stringify(tasks));
         renderTasks();
     }
 
-    // Event Listeners
-
-    // Add task on button click
+   
     addTaskBtn.addEventListener('click', addTask);
 
-    // Add task on Enter key press in input field
     taskInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
             addTask();
         }
     });
 
-    // Event delegation for marking complete and deleting tasks
+
     taskList.addEventListener('click', (e) => {
         const li = e.target.closest('.task-item');
-        if (!li) return; // Click was not on a task item
+        if (!li) return; 
 
         const taskId = parseInt(li.getAttribute('data-id'));
 
@@ -94,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Filter buttons event listeners
+    
     filterAllBtn.addEventListener('click', () => {
         currentFilter = 'all';
         updateFilterButtons('filterAll');
@@ -113,14 +107,13 @@ document.addEventListener('DOMContentLoaded', () => {
         renderTasks();
     });
 
-    // Function to update active filter button styling
+    
     function updateFilterButtons(activeButtonId) {
         document.querySelectorAll('.filters button').forEach(button => {
             button.classList.remove('active');
         });
         document.getElementById(activeButtonId).classList.add('active');
     }
-
-    // Initial render of tasks when the page loads
+ 
     renderTasks();
 });
